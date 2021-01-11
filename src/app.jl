@@ -1,6 +1,7 @@
 using Dash
 using DashHtmlComponents
 using DashCoreComponents
+using HTTP
 
 app = dash(external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"])
 
@@ -19,6 +20,9 @@ app.layout = html_div() do
     )
 end
 
+# then go to localhost
 # run_server(app, "0.0.0.0", 8080)
-println("started at localhost:$(parse(Int, ARGS[1]))")
-run_server(app, "0.0.0.0", parse(Int,ARGS[1]))
+# println("started at localhost:$(parse(Int, ARGS[1]))")
+# run_server(app, "0.0.0.0", parse(Int,ARGS[1]))
+# HTTP.serve(app, "0.0.0.0", 8080)
+HTTP.serve(app, "0.0.0.0", parse(Int,ARGS[1]))
